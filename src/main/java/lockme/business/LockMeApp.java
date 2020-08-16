@@ -274,8 +274,6 @@ public class LockMeApp {
             @SuppressWarnings("rawtypes")
 			Map.Entry pair = itr.next(); 
             list.add(new Credential(pair.getKey().toString(),pair.getValue().toString()));
-            //System.out.println(count+". "+pair.getKey().toString() + " : " + pair.getValue().toString()); 
-            //count++;
         } 
         Collections.sort(list,new CredentialComparator());
         for(Credential c:list) {
