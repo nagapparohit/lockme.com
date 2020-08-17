@@ -382,8 +382,7 @@ public class LockMeApp {
 
 	static void initApp() {
 		try {
-			String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
-			//String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+			String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 			db = new File(jarloc+"database.json");
 		} catch (URISyntaxException e1) {
 			System.out.println("\nException occur while creating database in jar location so"
