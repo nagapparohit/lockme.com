@@ -5,15 +5,11 @@
 	<groupId>com.simplilearn.app</groupId>
 	<artifactId>lockme</artifactId>
 	<version>0.0.1</version>
-	<packaging>jar</packaging>
-	<name>lockme</name>
 	
-	<url>http://maven.apache.org</url>
-
 	<properties>
 		<json-simple.version>1.1</json-simple.version>
-		<jdk.version>1.8</jdk.version>
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -21,72 +17,30 @@
 			<version>${json-simple.version}</version>
 		</dependency>
 	</dependencies>
-	
-	<!-- One-Jar is in the googlecode repository -->
-	<pluginRepositories>
-		<pluginRepository>
-			<id>onejar-maven-plugin.googlecode.com</id>
-			<url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
-		</pluginRepository>
-	</pluginRepositories>
-	
 	<build>
-	<finalName>lockme</finalName>
-	<pluginManagement>
 		<plugins>
-			<!--  download source code in Eclipse, best practise -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-				</configuration>
-			</plugin>
-			
-			<!-- Set a compiler level -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration> 	
-			</plugin>
-			
-			<!-- Make this jar executable -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>lockme.business.LockMeApp</mainClass>
-							<classpathPrefix>dependency-jars</classpathPrefix>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			
-			<!-- Include the runtime dependencies -->
-			<plugin>
-				<groupId>org.dstovall</groupId>
-				<artifactId>onejar-maven-plugin</artifactId>
-				<version>1.4.4</version>
+				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
 					<execution>
+						<phase>package</phase>
 						<goals>
-							<goal>one-jar</goal>
+							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>lockme.business.LockMeApp</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
 			</plugin>
 		</plugins>
-		
-	</pluginManagement>
 	</build>
 </project>
