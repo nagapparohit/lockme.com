@@ -164,7 +164,7 @@ public class LockMeApp {
 			} catch (Exception e) {
 				retry--;
 				if(retry !=0) {
-				System.out.println("\nInvalid Input.choose input from 1,2,3,4,5 or 6. retry left --> "+retry+"\n");
+				System.out.println("\nInvalid Input.choose input from 1,2,3,4,5,6,7 or 8. retry left --> "+retry+"\n");
 				}
 			} 
 		} while (!correctInput && retry!=0);
