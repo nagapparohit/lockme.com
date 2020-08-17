@@ -28,7 +28,6 @@ public class LockMeApp {
 	private static boolean loggedInStatus;
 	
 	public static void main(String[] args) {
-		
 		initApp();
 		welcomeApp();
 		loginScreen();
@@ -128,19 +127,29 @@ public class LockMeApp {
 		int choose = 0;
 		boolean correctInput=false;
 		int retry=3;
+		List<Integer> index = new ArrayList<Integer>();
+		index.add(1);
+		index.add(2);
+		index.add(3);
+		index.add(4);
+		index.add(5);
+		index.add(6);
 		do {
 			try {
 				System.out.print("choose from above options : ");
 				choose = Integer.parseInt(input.nextLine());
-				correctInput = true;
+				if(index.contains(choose)) {
+					correctInput = true;
+				}else {
+					throw new Exception();
+				}
 			} catch (Exception e) {
 				retry--;
 				if(retry !=0) {
 				System.out.println("\nInvalid Input.choose input from 1,2,3,4,5 or 6. retry left --> "+retry+"\n");
 				}
 			} 
-		} while (!correctInput && retry!=0 && !(choose==1 || choose==2 || choose==3
-				 || choose==4 || choose==5 || choose==6));
+		} while (!correctInput && retry!=0);
 		
 		switch(choose) {
 		case 1:
