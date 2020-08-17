@@ -188,13 +188,13 @@ public class LockMeApp {
 				list.add(new Credential(pair.getKey().toString(),pair.getValue().toString()));
 		    }
 			Collections.sort(list,new CredentialComparator());
-			System.out.println("*********************************************************");
+			System.out.println("\n*********************************************************");
 			for(Credential c:list) {
 				index.add(count);
 				System.out.println(count+". "+c.getUrl());
 				count++;
 			}
-			System.out.println("*********************************************************");
+			System.out.println("*********************************************************\n");
 			count--;
 			if (task==4) {
 				System.out.print("Choose from above credentials to delete : ");
@@ -282,14 +282,14 @@ public class LockMeApp {
             list.add(new Credential(pair.getKey().toString(),pair.getValue().toString()));
         }
         Collections.sort(list,new CredentialComparator());
-        System.out.println("*********************************************************");
+        System.out.println("\n*********************************************************");
         for(Credential c:list) {
 			index.add(count);
 			System.out.println(count+". "+c.getUrl());
 			count++;
 			
 		}
-        System.out.println("*********************************************************");
+        System.out.println("*********************************************************\n");
 		count--;
         System.out.print("Choose from above options : ");
         
@@ -312,7 +312,7 @@ public class LockMeApp {
 			} 
 		} while (!correctInput && retry!=0 );
 		if(correctInput &&choose!=0) {
-			System.out.println((list.get(choose-1)).getPassword());
+			System.out.println("\nYour credential for "+(list.get(choose-1)).getUrl()+" is "+(list.get(choose-1)).getPassword()+"\n");
 		}else {
 			System.out.println("you retry exhausted");
 		}
@@ -349,8 +349,8 @@ public class LockMeApp {
 		Iterator<Map.Entry> itr = credentials.entrySet().iterator();
         List<Credential> list = new ArrayList<Credential>();
         int count=1;
-        System.out.println("Below are your credentials ");
-        System.out.println("*********************************************************");
+        System.out.println("\nBelow are your credentials \n");
+        System.out.println("\n*********************************************************");
         while (itr.hasNext()) { 
             @SuppressWarnings("rawtypes")
 			Map.Entry pair = itr.next(); 
@@ -361,7 +361,7 @@ public class LockMeApp {
         	System.out.println(count+". "+c.getUrl()+"  <<=====>>  "+c.getPassword());
         	count++;
         }
-        System.out.println("*********************************************************");
+        System.out.println("*********************************************************\n");
         
 	}
 
