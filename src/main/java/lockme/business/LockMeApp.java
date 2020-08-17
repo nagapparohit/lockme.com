@@ -106,6 +106,7 @@ public class LockMeApp {
 			} 
 		}else {
 			System.out.println("User does not exists. Please signup.");
+			loginScreen();
 		}
 	}
 
