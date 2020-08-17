@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -223,7 +224,7 @@ public class LockMeApp {
 					String key = cred.getUrl();
 					credJson.remove(key);
 					updateDatabase();
-					System.out.println("credential sucessfully deleted");
+					System.out.println("\ncredential sucessfully deleted");
 				}else {
 					System.out.println("All try exhausted");
 				}
@@ -252,11 +253,11 @@ public class LockMeApp {
 				if (correctInput && choose!=0) {
 					Credential cred = list.get(choose - 1);
 					String key = cred.getUrl();
-					System.out.print("Enter new password for update : ");
+					System.out.print("\nEnter new password for update : ");
 					String newPass = input.nextLine();
 					credJson.put(key, newPass);
 					updateDatabase();
-					System.out.println("Credential successfully updated.");
+					System.out.println("\nCredential successfully updated.");
 				}else {
 					System.out.println("All try exhausted");
 				}
@@ -316,7 +317,9 @@ public class LockMeApp {
 			} 
 		} while (!correctInput && retry!=0 );
 		if(correctInput &&choose!=0) {
-			System.out.println("\nYour credential for "+(list.get(choose-1)).getUrl()+" is "+(list.get(choose-1)).getPassword()+"\n");
+			System.out.println("\n*********************************************************");
+			System.out.println("Your credential for "+(list.get(choose-1)).getUrl()+" is :"+(list.get(choose-1)).getPassword());
+			System.out.println("*********************************************************\n");
 		}else {
 			System.out.println("you retry exhausted");
 		}
@@ -338,7 +341,7 @@ public class LockMeApp {
 			((JSONObject)database.get(user.getUsername())).put("credentials",credJson);
 		}
 		updateDatabase();	
-		System.out.println("Credentials are  succesfully stored\n");
+		System.out.println("\nCredentials are  succesfully stored\n");
 	}
 
 	static void fetchCredentials() {
@@ -377,7 +380,16 @@ public class LockMeApp {
 	
 
 	static void initApp() {
-		db = new File("database.json");
+		try {
+			String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation()
+				    .toURI().getPath();
+			db = new File(jarloc+"database.json");
+		} catch (URISyntaxException e1) {
+			System.out.println("\nException occur while creating database in jar location so"
+					+ " creating database in place from running jar.");
+			db = new File("database.json");
+		}
+		
 		input = new Scanner(System.in);
 		loggedInStatus = false;
 		try {
