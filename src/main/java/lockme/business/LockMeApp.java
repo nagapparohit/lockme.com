@@ -193,9 +193,6 @@ public class LockMeApp {
 				count++;
 			}
 			count--;
-			for(Integer i:index) {
-				System.out.println("index value is "+i);
-			}
 			if (task==4) {
 				System.out.println("Choose from above credentials to delete:");
 				int choose = 0;
@@ -220,6 +217,7 @@ public class LockMeApp {
 					Credential cred = list.get(choose - 1);
 					String key = cred.getUrl();
 					credJson.remove(key);
+					updateDatabase();
 					System.out.println("credential sucessfully deleted");
 				}else {
 					System.out.println("All try exhausted");
@@ -227,16 +225,38 @@ public class LockMeApp {
 				
 			}else {
 				System.out.println("Choose from above credentials to Update:");
-				int choose = Integer.parseInt(input.nextLine()); //need to handle input from user
-				Credential cred = list.get(choose - 1);
-				String key = cred.getUrl();
-				System.out.println("Enter new password for update");
-				String newPass = input.nextLine();
-				credJson.put(key,newPass);
-				System.out.println("Credential successfully updated.");
+				int choose = 0;
+				boolean correctInput=false;
+				int retry=3;
+				do {
+					try {
+						choose = Integer.parseInt(input.nextLine());
+						if(index.contains(choose)) {
+							correctInput = true;
+						}else {
+							throw new Exception();
+						}
+					} catch (Exception e) {
+						retry--;
+						if(retry !=0) {
+						System.out.println("Invalid Input.choose input between 1 to " +(count)+" retry left -->"+retry);
+						}
+					} 
+				} while (!correctInput && retry!=0 );
+				if (correctInput && choose!=0) {
+					Credential cred = list.get(choose - 1);
+					String key = cred.getUrl();
+					System.out.println("Enter new password for update");
+					String newPass = input.nextLine();
+					credJson.put(key, newPass);
+					updateDatabase();
+					System.out.println("Credential successfully updated.");
+				}else {
+					System.out.println("All try exhausted");
+				}
 				
 			}
-			updateDatabase();
+			
 		}
 	}
 
