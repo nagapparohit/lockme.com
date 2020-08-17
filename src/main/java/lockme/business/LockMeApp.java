@@ -110,11 +110,18 @@ public class LockMeApp {
 					successfulLogin();
 				}else {
 					retry--;
+					if(retry==0) {
+						System.out.println("\nAll try exhausted. So exiting the App.");
+						input.close();
+						thankYouBanner();
+						System.exit(0);
+					}else {
 					System.out.println("\nIncorrect password. retry left --> "+retry+"\n");
+					}
 				} 
 				
 			}while(!flag && retry !=0);
-			System.out.println("\nAll try exhausted. So exiting the App.");
+			
 		}else {
 			System.out.println("\nUser does not exists. Please signup.\n");
 			loginScreen();
