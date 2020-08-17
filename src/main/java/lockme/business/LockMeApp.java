@@ -345,6 +345,7 @@ public class LockMeApp {
         List<Credential> list = new ArrayList<Credential>();
         int count=1;
         System.out.println("Below are your credentials ");
+        System.out.println("*********************************************************");
         while (itr.hasNext()) { 
             @SuppressWarnings("rawtypes")
 			Map.Entry pair = itr.next(); 
@@ -352,10 +353,10 @@ public class LockMeApp {
         } 
         Collections.sort(list,new CredentialComparator());
         for(Credential c:list) {
-        	System.out.println(count+"."+c.getUrl()+" : "+c.getPassword());
+        	System.out.println(count+". "+c.getUrl()+"<<=====>>"+c.getPassword());
         	count++;
         }
-        
+        System.out.println("*********************************************************");
         
 	}
 
