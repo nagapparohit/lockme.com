@@ -180,6 +180,7 @@ public class LockMeApp {
 			JSONObject credJson = (JSONObject) ((JSONObject)database.get(user.getUsername())).get("credentials");
 			Iterator<Map.Entry> itr = credentials.entrySet().iterator();
 			List<Credential> list = new ArrayList<Credential>();
+			List<Integer> index = new ArrayList<Integer>();
 			int count = 1;
 			while (itr.hasNext()) { 
 				Map.Entry pair = itr.next(); 
@@ -187,15 +188,43 @@ public class LockMeApp {
 		    }
 			Collections.sort(list,new CredentialComparator());
 			for(Credential c:list) {
+				index.add(count);
 				System.out.println(count+"."+c.getUrl());
 				count++;
 			}
+			count--;
+			for(Integer i:index) {
+				System.out.println("index value is "+i);
+			}
 			if (task==4) {
 				System.out.println("Choose from above credentials to delete:");
-				int choose = Integer.parseInt(input.nextLine()); //need to handle input from user
-				Credential cred = list.get(choose - 1);
-				String key = cred.getUrl();
-				credJson.remove(key);
+				int choose = 0;
+				boolean correctInput=false;
+				int retry=3;
+				do {
+					try {
+						choose = Integer.parseInt(input.nextLine());
+						if(index.contains(choose)) {
+							correctInput = true;
+						}else {
+							throw new Exception();
+						}
+					} catch (Exception e) {
+						retry--;
+						if(retry !=0) {
+						System.out.println("Invalid Input.choose input between 1 to " +(count)+" retry left -->"+retry);
+						}
+					} 
+				} while (!correctInput && retry!=0 );
+				if(correctInput && choose !=0) {
+					Credential cred = list.get(choose - 1);
+					String key = cred.getUrl();
+					credJson.remove(key);
+					System.out.println("credential sucessfully deleted");
+				}else {
+					System.out.println("All try exhausted");
+				}
+				
 			}else {
 				System.out.println("Choose from above credentials to Update:");
 				int choose = Integer.parseInt(input.nextLine()); //need to handle input from user
@@ -222,6 +251,7 @@ public class LockMeApp {
         @SuppressWarnings({ "unchecked", "rawtypes" })
 		Iterator<Map.Entry> itr = credentials.entrySet().iterator();
         List<Credential> list = new ArrayList<Credential>();
+        List<Integer> index = new ArrayList<Integer>();
         int count = 1;
         while (itr.hasNext()) { 
             @SuppressWarnings("rawtypes")
@@ -230,12 +260,36 @@ public class LockMeApp {
         }
         Collections.sort(list,new CredentialComparator());
 		for(Credential c:list) {
+			index.add(count);
 			System.out.println(count+"."+c.getUrl());
 			count++;
+			
 		}
+		count--;
         System.out.println("Choose from above options :");
-        int choose = Integer.parseInt(input.nextLine()); //need to handle invalid inputs
-        System.out.println((list.get(choose-1)).getPassword());
+        int choose = 0; 
+        boolean correctInput=false;
+		int retry=3;
+		do {
+			try {
+				choose = Integer.parseInt(input.nextLine());
+				if(index.contains(choose)) {
+					correctInput = true;
+				}else {
+					throw new Exception();
+				}
+			} catch (Exception e) {
+				retry--;
+				if(retry !=0) {
+				System.out.println("Invalid Input.choose input between 1 to " +(count)+" retry left -->"+retry);
+				}
+			} 
+		} while (!correctInput && retry!=0 );
+		if(correctInput &&choose!=0) {
+			System.out.println((list.get(choose-1)).getPassword());
+		}else {
+			System.out.println("you retry exhausted");
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -280,6 +334,7 @@ public class LockMeApp {
         	System.out.println(count+"."+c.getUrl()+" : "+c.getPassword());
         	count++;
         }
+        
         
 	}
 
