@@ -35,10 +35,10 @@ public class LockMeApp {
 	@SuppressWarnings("unchecked")
 	static void signUp() {
 		signUpBanner();
-		System.out.println("Enter username : ");
+		System.out.print("Enter username : ");
 		String username = input.nextLine();
 		if (!checkUserExist(username)) {
-			System.out.println("Enter password");
+			System.out.print("Enter password : ");
 			String password = input.nextLine();
 			JSONObject user = new JSONObject();
 			JSONObject cred = new JSONObject();
@@ -90,9 +90,9 @@ public class LockMeApp {
 
 	static void logIn() {
 		logInBanner();
-		System.out.println("Enter username");
+		System.out.print("Enter username : ");
 		String username = input.nextLine();
-		System.out.println("Enter password");
+		System.out.print("Enter password : ");
 		String password = input.nextLine();
 		boolean userExistence = checkUserExist(username);
 		if (userExistence) {
@@ -121,7 +121,7 @@ public class LockMeApp {
 		}
 		loggedInStatus=true;
 		successfullLoginOptions();
-		System.out.println("choose from above options");
+		System.out.print("choose from above options : ");
 		int choose = 0;
 		boolean correctInput=false;
 		int retry=3;
@@ -197,7 +197,7 @@ public class LockMeApp {
 			System.out.println("*********************************************************");
 			count--;
 			if (task==4) {
-				System.out.println("Choose from above credentials to delete:");
+				System.out.print("Choose from above credentials to delete : ");
 				int choose = 0;
 				boolean correctInput=false;
 				int retry=3;
@@ -227,7 +227,7 @@ public class LockMeApp {
 				}
 				
 			}else {
-				System.out.println("Choose from above credentials to Update:");
+				System.out.print("Choose from above credentials to Update : ");
 				int choose = 0;
 				boolean correctInput=false;
 				int retry=3;
@@ -249,7 +249,7 @@ public class LockMeApp {
 				if (correctInput && choose!=0) {
 					Credential cred = list.get(choose - 1);
 					String key = cred.getUrl();
-					System.out.println("Enter new password for update");
+					System.out.print("Enter new password for update : ");
 					String newPass = input.nextLine();
 					credJson.put(key, newPass);
 					updateDatabase();
@@ -291,7 +291,7 @@ public class LockMeApp {
 		}
         System.out.println("*********************************************************");
 		count--;
-        System.out.println("Choose from above options :");
+        System.out.print("Choose from above options : ");
         
         int choose = 0; 
         boolean correctInput=false;
@@ -321,9 +321,9 @@ public class LockMeApp {
 	@SuppressWarnings("unchecked")
 	static void storeCredentials() {
 		 JSONObject credJson=null;
-		 System.out.println("Enter url");
+		 System.out.print("Enter url : ");
 		 String url = input.nextLine();
-		 System.out.println("Enter url password");
+		 System.out.print("Enter url password : ");
 		 String password = input.nextLine();
 		 try {
 			credJson = (JSONObject) ((JSONObject)database.get(user.getUsername())).get("credentials");
@@ -424,15 +424,15 @@ public class LockMeApp {
 		System.out.println("1. LogIn");
 		System.out.println("2. SignUp");
 		System.out.println("3. Exit");
-		System.out.println("Please Choose from above options : ");
+		System.out.print("Please Choose from above options : ");
 	}
 	static void successfullLoginOptions() {
-		System.out.println("1. Store credentials    ");
-		System.out.println("2. Fetch All credentials");
-		System.out.println("3. Fetch  1 Credential  ");
-		System.out.println("4. Delete a credential  ");
-		System.out.println("5. Update a credential  ");
-		System.out.println("6. Exit App.");
+		System.out.println("1. Store credentials    \n");
+		System.out.println("2. Fetch All credentials\n");
+		System.out.println("3. Fetch  1 Credential  \n");
+		System.out.println("4. Delete a credential  \n");
+		System.out.println("5. Update a credential  \n");
+		System.out.println("6. Exit App.\n");
 	}
 	static void welcomeApp() {
 		System.out.println("*************************************************");
