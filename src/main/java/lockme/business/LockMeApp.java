@@ -28,6 +28,7 @@ public class LockMeApp {
 	private static boolean loggedInStatus;
 	
 	public static void main(String[] args) {
+		
 		initApp();
 		welcomeApp();
 		loginScreen();
@@ -178,7 +179,7 @@ public class LockMeApp {
 	static void deleteOrUpdateCredential(int task) {
 		Map credentials = (Map)((JSONObject)database.get(user.getUsername())).get("credentials");
 		if(credentials.isEmpty()) {
-			System.out.println("No credentials exists for user  "+user.getUsername()+" .Please Store credentials");
+			System.out.println("\nNo credentials exists for user  "+user.getUsername()+" .Please Store credentials\n");
 			return;
 		}else {
 			JSONObject credJson = (JSONObject) ((JSONObject)database.get(user.getUsername())).get("credentials");
@@ -272,7 +273,7 @@ public class LockMeApp {
 		@SuppressWarnings("rawtypes")
 		Map credentials = (Map)((JSONObject)database.get(user.getUsername())).get("credentials");
 		if(credentials.isEmpty()) {
-			System.out.println("No credentials exists for user  "+user.getUsername()+" .Please Store credentials");
+			System.out.println("\nNo credentials exists for user  "+user.getUsername()+" .Please Store credentials\n");
 			return;
 		}
         @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -348,7 +349,7 @@ public class LockMeApp {
 		@SuppressWarnings("rawtypes")
 		Map credentials = (Map)((JSONObject)database.get(user.getUsername())).get("credentials");
 		if(credentials.isEmpty()) {
-			System.out.println("No credentials exists for user  "+user.getUsername()+" .Please Store credentials");
+			System.out.println("\nNo credentials exists for user  "+user.getUsername()+" .Please Store credentials\n");
 			return;
 		}
 		
@@ -381,8 +382,8 @@ public class LockMeApp {
 
 	static void initApp() {
 		try {
-			String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation()
-				    .toURI().getPath();
+			String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
+			//String jarloc=LockMeApp.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 			db = new File(jarloc+"database.json");
 		} catch (URISyntaxException e1) {
 			System.out.println("\nException occur while creating database in jar location so"
