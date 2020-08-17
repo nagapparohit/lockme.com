@@ -312,7 +312,7 @@ public class LockMeApp {
 		int retry=3;
 		do {
 			try {
-				System.out.print("Choose from above options : ");
+				System.out.print("Choose 1 URL from above options : ");
 				choose = Integer.parseInt(input.nextLine());
 				if(index.contains(choose)) {
 					correctInput = true;
