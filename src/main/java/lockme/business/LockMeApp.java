@@ -60,6 +60,7 @@ public class LockMeApp {
 		int retry=3;
 		do {
 			try {
+				System.out.print("Please Choose from above options : ");
 				choose = Integer.parseInt(input.nextLine());
 				correctInput = true;
 			} catch (Exception e) {
@@ -121,12 +122,13 @@ public class LockMeApp {
 		}
 		loggedInStatus=true;
 		successfullLoginOptions();
-		System.out.print("choose from above options : ");
+		//System.out.print("choose from above options : ");
 		int choose = 0;
 		boolean correctInput=false;
 		int retry=3;
 		do {
 			try {
+				System.out.print("choose from above options : ");
 				choose = Integer.parseInt(input.nextLine());
 				correctInput = true;
 			} catch (Exception e) {
@@ -197,12 +199,13 @@ public class LockMeApp {
 			System.out.println("*********************************************************\n");
 			count--;
 			if (task==4) {
-				System.out.print("Choose from above credentials to delete : ");
+				//System.out.print("Choose from above credentials to delete : ");
 				int choose = 0;
 				boolean correctInput=false;
 				int retry=3;
 				do {
 					try {
+						System.out.print("Choose from above credentials to delete : ");
 						choose = Integer.parseInt(input.nextLine());
 						if(index.contains(choose)) {
 							correctInput = true;
@@ -227,12 +230,13 @@ public class LockMeApp {
 				}
 				
 			}else {
-				System.out.print("Choose from above credentials to Update : ");
+				//System.out.print("Choose from above credentials to Update : ");
 				int choose = 0;
 				boolean correctInput=false;
 				int retry=3;
 				do {
 					try {
+						System.out.print("Choose from above credentials to Update : ");
 						choose = Integer.parseInt(input.nextLine());
 						if(index.contains(choose)) {
 							correctInput = true;
@@ -291,13 +295,14 @@ public class LockMeApp {
 		}
         System.out.println("*********************************************************\n");
 		count--;
-        System.out.print("Choose from above options : ");
+        //System.out.print("Choose from above options : ");
         
         int choose = 0; 
         boolean correctInput=false;
 		int retry=3;
 		do {
 			try {
+				System.out.print("Choose from above options : ");
 				choose = Integer.parseInt(input.nextLine());
 				if(index.contains(choose)) {
 					correctInput = true;
@@ -424,7 +429,7 @@ public class LockMeApp {
 		System.out.println("1. LogIn");
 		System.out.println("2. SignUp");
 		System.out.println("3. Exit");
-		System.out.print("Please Choose from above options : ");
+		//System.out.print("Please Choose from above options : ");
 	}
 	static void successfullLoginOptions() {
 		System.out.println("1. Store credentials    \n");
