@@ -66,7 +66,7 @@ public class LockMeApp {
 			} catch (Exception e) {
 				retry--;
 				if(retry !=0) {
-				System.out.println("Invalid Input.choose input from 1,2 or 3. retry left -->"+retry);
+				System.out.println("\nInvalid Input.choose input from 1,2 or 3. retry left --> "+retry+"\n");
 				}
 			} 
 		} while (!correctInput && retry!=0 && !(choose==1 || choose==2 || choose==3));
@@ -84,7 +84,7 @@ public class LockMeApp {
 			System.exit(0);
 			break;
 		default:
-			System.out.println("Invalid Input 3 times, So exiting from App.");
+			System.out.println("\nInvalid Input 3 times, So exiting from App.\n");
 		}	
 	}
 
@@ -106,7 +106,7 @@ public class LockMeApp {
 				System.out.println("password is not correct");
 			} 
 		}else {
-			System.out.println("User does not exists. Please signup.");
+			System.out.println("\nUser does not exists. Please signup.\n");
 			loginScreen();
 		}
 	}
@@ -122,7 +122,7 @@ public class LockMeApp {
 		}
 		loggedInStatus=true;
 		successfullLoginOptions();
-		//System.out.print("choose from above options : ");
+		
 		int choose = 0;
 		boolean correctInput=false;
 		int retry=3;
@@ -134,7 +134,7 @@ public class LockMeApp {
 			} catch (Exception e) {
 				retry--;
 				if(retry !=0) {
-				System.out.println("Invalid Input.choose input from 1,2,3,4,5 or 6. retry left -->"+retry);
+				System.out.println("\nInvalid Input.choose input from 1,2,3,4,5 or 6. retry left --> "+retry+"\n");
 				}
 			} 
 		} while (!correctInput && retry!=0 && !(choose==1 || choose==2 || choose==3
@@ -167,7 +167,7 @@ public class LockMeApp {
 			System.exit(0);
 			break;
 		default:
-			System.out.println("Invalid Input 3 times, So existing from App.");
+			System.out.println("\nInvalid Input 3 times, So existing from App.\n");
 		}
 		
 	}
@@ -199,7 +199,6 @@ public class LockMeApp {
 			System.out.println("*********************************************************\n");
 			count--;
 			if (task==4) {
-				//System.out.print("Choose from above credentials to delete : ");
 				int choose = 0;
 				boolean correctInput=false;
 				int retry=3;
@@ -215,7 +214,7 @@ public class LockMeApp {
 					} catch (Exception e) {
 						retry--;
 						if(retry !=0) {
-						System.out.println("Invalid Input.choose input between 1 to " +(count)+" retry left -->"+retry);
+						System.out.println("\nInvalid Input.choose input between 1 to " +(count)+" retry left --> "+retry+"\n");
 						}
 					} 
 				} while (!correctInput && retry!=0 );
@@ -230,7 +229,7 @@ public class LockMeApp {
 				}
 				
 			}else {
-				//System.out.print("Choose from above credentials to Update : ");
+				
 				int choose = 0;
 				boolean correctInput=false;
 				int retry=3;
@@ -246,7 +245,7 @@ public class LockMeApp {
 					} catch (Exception e) {
 						retry--;
 						if(retry !=0) {
-						System.out.println("Invalid Input.choose input between 1 to " +(count)+" retry left -->"+retry);
+						System.out.println("\nInvalid Input.choose input between 1 to " +(count)+" retry left --> "+retry+"\n");
 						}
 					} 
 				} while (!correctInput && retry!=0 );
@@ -295,7 +294,7 @@ public class LockMeApp {
 		}
         System.out.println("*********************************************************\n");
 		count--;
-        //System.out.print("Choose from above options : ");
+        
         
         int choose = 0; 
         boolean correctInput=false;
@@ -312,7 +311,7 @@ public class LockMeApp {
 			} catch (Exception e) {
 				retry--;
 				if(retry !=0) {
-				System.out.println("Invalid Input.choose input between 1 to " +(count)+" retry left -->"+retry);
+				System.out.println("\nInvalid Input.choose input between 1 to " +(count)+" retry left --> "+retry+"\n");
 				}
 			} 
 		} while (!correctInput && retry!=0 );
@@ -429,7 +428,7 @@ public class LockMeApp {
 		System.out.println("1. LogIn");
 		System.out.println("2. SignUp");
 		System.out.println("3. Exit");
-		//System.out.print("Please Choose from above options : ");
+		
 	}
 	static void successfullLoginOptions() {
 		System.out.println("1. Store credentials    \n");
