@@ -328,7 +328,7 @@ public class LockMeApp {
 		} while (!correctInput && retry!=0 );
 		if(correctInput &&choose!=0) {
 			System.out.println("\n*********************************************************");
-			System.out.println("Your credential for "+(list.get(choose-1)).getUrl()+" is :"+(list.get(choose-1)).getPassword());
+			System.out.println("Your credential for "+(list.get(choose-1)).getUrl()+" is : "+(list.get(choose-1)).getPassword());
 			System.out.println("*********************************************************\n");
 		}else {
 			System.out.println("you retry exhausted");
