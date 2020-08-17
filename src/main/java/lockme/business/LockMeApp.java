@@ -234,7 +234,7 @@ public class LockMeApp {
 					String key = cred.getUrl();
 					credJson.remove(key);
 					updateDatabase();
-					System.out.println("\ncredential for "+key+" is sucessfully deleted");
+					System.out.println("\ncredential for "+key+" is sucessfully deleted\n");
 				}else {
 					System.out.println("All try exhausted");
 				}
