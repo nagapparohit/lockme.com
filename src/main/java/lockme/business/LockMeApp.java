@@ -94,18 +94,27 @@ public class LockMeApp {
 		logInBanner();
 		System.out.print("Enter username : ");
 		String username = input.nextLine();
-		System.out.print("Enter password : ");
-		String password = input.nextLine();
+		//System.out.print("Enter password : ");
+		//String password = input.nextLine();
 		boolean userExistence = checkUserExist(username);
+		int retry=3;
 		if (userExistence) {
-			boolean flag = validateLogin(username, password);
-			if (flag) {
-				user = new User();
-				user.setUsername(username);
-				successfulLogin();
-			}else {
-				System.out.println("password is not correct");
-			} 
+			boolean flag = false;
+			do {
+				System.out.print("Enter password : ");
+				String password = input.nextLine();
+			    flag = validateLogin(username, password);
+				if (flag) {
+					user = new User();
+					user.setUsername(username);
+					successfulLogin();
+				}else {
+					retry--;
+					System.out.println("\nIncorrect password. retry left --> "+retry+"\n");
+				} 
+				
+			}while(!flag && retry !=0);
+			System.out.println("\nAll try exhausted. So exiting the App.");
 		}else {
 			System.out.println("\nUser does not exists. Please signup.\n");
 			loginScreen();
@@ -134,6 +143,8 @@ public class LockMeApp {
 		index.add(4);
 		index.add(5);
 		index.add(6);
+		index.add(7);
+		index.add(8);
 		do {
 			try {
 				System.out.print("choose from above options : ");
@@ -177,12 +188,43 @@ public class LockMeApp {
 			thankYouBanner();
 			System.exit(0);
 			break;
+		case 7:
+			updateAccountPassword();
+			loginScreen();
+			break;
+		case 8:
+			deleteAccount();
+			loginScreen();
+			//input.close();
+			//thankYouBanner();
+			//System.exit(0);
+			break;
 		default:
 			System.out.println("\nInvalid Input 3 times, So existing from App.\n");
 		}
 		
 	}
 		
+
+	static void deleteAccount() {
+		
+		database.remove(user.getUsername());
+		updateDatabase();
+		System.out.println("\nAccount of User "+user.getUsername()+" is successfully deleted.\n");
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	static void updateAccountPassword() {
+		
+		System.out.print("Enter new passowrd : ");
+		String newpassword = input.nextLine();
+		JSONObject jsonUser = (JSONObject)database.get(user.getUsername());
+		jsonUser.put("password", newpassword);
+		updateDatabase();
+		System.out.println("\nPassword for user "+user.getUsername()+ " is successfully updated.\n");
+		
+	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	static void deleteOrUpdateCredential(int task) {
@@ -452,12 +494,14 @@ public class LockMeApp {
 		
 	}
 	static void successfullLoginOptions() {
-		System.out.println("1. Store credentials    \n");
+		System.out.println("\n1. Store credentials    \n");
 		System.out.println("2. Fetch All credentials\n");
 		System.out.println("3. Fetch  1 Credential  \n");
 		System.out.println("4. Delete a credential  \n");
 		System.out.println("5. Update a credential  \n");
 		System.out.println("6. Exit App.\n");
+		System.out.println("7. Update Account Password  \n");
+		System.out.println("8. Delete Account  \n");
 	}
 	static void welcomeApp() {
 		System.out.println("*************************************************");
