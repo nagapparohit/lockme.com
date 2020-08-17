@@ -83,7 +83,7 @@ public class LockMeApp {
 			System.exit(0);
 			break;
 		default:
-			System.out.println("Invalid Input 3 times, So existing from App.");
+			System.out.println("Invalid Input 3 times, So exiting from App.");
 		}	
 	}
 
@@ -188,11 +188,13 @@ public class LockMeApp {
 				list.add(new Credential(pair.getKey().toString(),pair.getValue().toString()));
 		    }
 			Collections.sort(list,new CredentialComparator());
+			System.out.println("*********************************************************");
 			for(Credential c:list) {
 				index.add(count);
-				System.out.println(count+"."+c.getUrl());
+				System.out.println(count+". "+c.getUrl());
 				count++;
 			}
+			System.out.println("*********************************************************");
 			count--;
 			if (task==4) {
 				System.out.println("Choose from above credentials to delete:");
@@ -280,14 +282,17 @@ public class LockMeApp {
             list.add(new Credential(pair.getKey().toString(),pair.getValue().toString()));
         }
         Collections.sort(list,new CredentialComparator());
-		for(Credential c:list) {
+        System.out.println("*********************************************************");
+        for(Credential c:list) {
 			index.add(count);
-			System.out.println(count+"."+c.getUrl());
+			System.out.println(count+". "+c.getUrl());
 			count++;
 			
 		}
+        System.out.println("*********************************************************");
 		count--;
         System.out.println("Choose from above options :");
+        
         int choose = 0; 
         boolean correctInput=false;
 		int retry=3;
@@ -353,7 +358,7 @@ public class LockMeApp {
         } 
         Collections.sort(list,new CredentialComparator());
         for(Credential c:list) {
-        	System.out.println(count+". "+c.getUrl()+"<<=====>>"+c.getPassword());
+        	System.out.println(count+". "+c.getUrl()+"  <<=====>>  "+c.getPassword());
         	count++;
         }
         System.out.println("*********************************************************");
