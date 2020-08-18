@@ -518,6 +518,7 @@ public class LockMeApp {
 		System.out.println("*                                               *");
 		System.out.println("*                                               *");
 		System.out.println("*      WELCOME TO LOCK ME APP VERSION 0.0.1     *");
+		System.out.println("*        DEVELOPED BY : ROHIT NAGAPPA           *");
 		System.out.println("*                                               *");
 		System.out.println("*                                               *");
 		System.out.println("*************************************************");
