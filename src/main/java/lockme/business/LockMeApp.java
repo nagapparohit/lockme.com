@@ -202,9 +202,6 @@ public class LockMeApp {
 		case 8:
 			deleteAccount();
 			loginScreen();
-			//input.close();
-			//thankYouBanner();
-			//System.exit(0);
 			break;
 		default:
 			System.out.println("\nInvalid Input 3 times, So existing from App.\n");
@@ -237,7 +234,9 @@ public class LockMeApp {
 	static void deleteOrUpdateCredential(int task) {
 		Map credentials = (Map)((JSONObject)database.get(user.getUsername())).get("credentials");
 		if(credentials.isEmpty()) {
+			System.out.println("\n*********************************************************");
 			System.out.println("\nNo credentials exists for user  "+user.getUsername()+" .Please Store credentials\n");
+			System.out.println("*********************************************************\n");
 			return;
 		}else {
 			JSONObject credJson = (JSONObject) ((JSONObject)database.get(user.getUsername())).get("credentials");
@@ -331,7 +330,9 @@ public class LockMeApp {
 		@SuppressWarnings("rawtypes")
 		Map credentials = (Map)((JSONObject)database.get(user.getUsername())).get("credentials");
 		if(credentials.isEmpty()) {
+			System.out.println("\n*********************************************************");
 			System.out.println("\nNo credentials exists for user  "+user.getUsername()+" .Please Store credentials\n");
+			System.out.println("*********************************************************\n");
 			return;
 		}
         @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -407,7 +408,9 @@ public class LockMeApp {
 		@SuppressWarnings("rawtypes")
 		Map credentials = (Map)((JSONObject)database.get(user.getUsername())).get("credentials");
 		if(credentials.isEmpty()) {
+			System.out.println("\n*********************************************************");
 			System.out.println("\nNo credentials exists for user  "+user.getUsername()+" .Please Store credentials\n");
+			System.out.println("*********************************************************\n");
 			return;
 		}
 		
